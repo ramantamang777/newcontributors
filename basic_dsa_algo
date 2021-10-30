@@ -1,0 +1,38 @@
+//How to find the first and last index of the numbers in an array
+//Using this approch you can solve this problem
+static int searchforthetwoindex(int[] nums, int target, boolean firstindex)
+    {
+        int ans = -1;
+        int start = 0;
+        int end = nums.length-1;
+        while (start <= end)
+        {
+            int mid = start + (end - start)/2;
+            if(target < nums[mid])
+            {
+                end = mid - 1;
+            }
+            else if(target > nums[mid])
+            {
+                start = mid + 1;
+            }
+            else
+            {
+                ans = mid;
+
+                //if the potential answer has been found
+                //check if any number is = target is in the lefthand side
+                //if it contains then ( if ) will run
+                //if it doesn't contains then ( else ) part will run
+                if(firstindex)
+                {
+                    end = mid-1;
+                }
+                else
+                {
+                    start = mid+1;
+                }
+            }
+        }
+        return ans;
+    }
